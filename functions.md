@@ -1,32 +1,20 @@
 # WordPress
 ```html
 <?php
-/**
- * All functions and definitions
- *
- * @link https://developer.wordpress.org/themes/basics/theme-functions/
- *
- * @package WordPress
- * @since 1.0
- */
-
-/**
- * Implement the Customimzer.
- */
 function gdit_themes_setup() {
-	//add_theme_support( 'title-tag' );
-	add_theme_support( 'post-thumbnails' );
-	add_image_size( 'news-thumb', 513, 322, true );
-	add_image_size( 'development-thumb', 488, 411, true );
-	add_image_size( 'development-detail', 265, 500, true );
-	add_image_size( 'interview-img', 242, 363, true );
-	register_nav_menus( array(
-		'top'    => __( 'Top Menu', 'gdit' ),
-		'footer'    => __( 'Footer Menu', 'gdit' ),
-		'sitemap'    => __( 'Sitemap', 'gdit' ),
-	));
-	// Add theme support for selective refresh for widgets.
-	add_theme_support( 'customize-selective-refresh-widgets' );
+//add_theme_support( 'title-tag' );
+add_theme_support( 'post-thumbnails' );
+add_image_size( 'news-thumb', 513, 322, true );
+add_image_size( 'development-thumb', 488, 411, true );
+add_image_size( 'development-detail', 265, 500, true );
+add_image_size( 'interview-img', 242, 363, true );
+register_nav_menus( array(
+	'top'    => __( 'Top Menu', 'gdit' ),
+	'footer'    => __( 'Footer Menu', 'gdit' ),
+	'sitemap'    => __( 'Sitemap', 'gdit' ),
+));
+// Add theme support for selective refresh for widgets.
+add_theme_support( 'customize-selective-refresh-widgets' );
 }
 add_action( 'after_setup_theme', 'gdit_themes_setup' );
 
@@ -229,35 +217,6 @@ $fb = new Facebook\Facebook([
 	'app_secret' => '53187ad7861f5f90ae012e28082fe0d9',
 	'default_graph_version' => 'v2.4',
 ]);
-function facebook_post($post_id, $post) {
-	if($post->post_type == 'recruit_position') {
-		$content_post = get_post($post_id);
-        $excerpt = $content_post->post_content;
-		$excerpt = apply_filters('the_content', $excerpt);
-		$excerpt = strip_tags( html_entity_decode($excerpt) );
-		// die($message_fb);
-		//$fb_img = site_url() . '/wp-content/uploads/2020/07/jp_invest-e1594788126814.jpg';
-		//Post property to Facebook
-		$linkData = [
-			// 'source' => $GLOBALS['fb']->fileToUpload($fb_img),
-
-			  	'message' => $excerpt,
-		];
-		$pageAccessToken  ='EAADZCpMMcZB40BAFZAQEqoNLvxqeBXv035t84fn7RERVGVGl5Cv17jFn7MOvtlSXps3LffhG1OxIbwu4YhZBsra8SNjgZBRZCIGRcZAgZCbEgR61LJ43owUz4r6SkCtfWmzX7eTh83vtBlAsWPREOOAi1yq8ZAi92dquSDebPxltGHwZDZD';
-		
-		try {
-			$response = $GLOBALS['fb']->post('/me/feed', $linkData, $pageAccessToken);
-		} catch(Facebook\Exceptions\FacebookResponseException $e) {
-			echo 'Graph returned an error: '.$e->getMessage();
-			exit;
-		} catch(Facebook\Exceptions\FacebookSDKException $e) {
-			echo 'Facebook SDK returned an error: '.$e->getMessage();
-			exit;
-		}
-		$graphNode = $response->getGraphNode();
-
-	}
-}
 add_action( 'save_post', 'facebook_post', 10, 3 );
 ?>
 ```
