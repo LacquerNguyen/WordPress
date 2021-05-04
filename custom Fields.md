@@ -1,5 +1,5 @@
 # lấy dữ liệu custom Fields.md
-``php
+```php
 <?php 
     $people_args = array(
         'post_type' => 'people',
