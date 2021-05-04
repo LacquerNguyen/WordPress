@@ -1,4 +1,5 @@
 # lấy dữ liệu posts wp
+```php
 <?php
 /*
 * Template Name: Blog single page
@@ -40,3 +41,4 @@ get_header();
         </div>
         <?php endwhile; ?>
     <?php endif; ?>
+    ```
