@@ -1,4 +1,5 @@
 # lấy dữ liệu custom Fields.md
+``php
 <?php 
     $people_args = array(
         'post_type' => 'people',
@@ -29,3 +30,4 @@
         <?php endwhile; ?>
     <?php wp_reset_postdata(); ?>
 <?php endif;?>
+```
