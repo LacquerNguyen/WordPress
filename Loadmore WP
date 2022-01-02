@@ -1,3 +1,4 @@
+# WordPress
 ```php
 add_action( 'wp_footer', 'my_action_javascript' ); // Write our JS below here
 
