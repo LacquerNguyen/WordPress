@@ -1,0 +1,17 @@
+ <?php
+      $args = array(
+          'post_type' => 'department',
+      'taxonomy' => 'department-category',
+      'orderby' => 'ID',
+      'order' => 'ASC'
+      );
+
+      $categorys = get_categories($args);
+          $i = 1;
+          foreach($categorys as $category) {
+            echo ' 
+                  <li><a class="tabs-ttl__'.$i.'" href="#tab-content__'.$i.'">'.$category->name.'</a></li>
+                 ';
+
+          }
+?>
