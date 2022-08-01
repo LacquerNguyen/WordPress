@@ -29,4 +29,12 @@ function career_custom_taxonomies() {
 }
 add_action( 'init', 'career_custom_taxonomies', 0 );
 
+
+function my_change_posts_order( $query ){
+    if (is_tax( 'department-category', $taxonomy_term_object )) {
+        $query->set( 'order', 'ASC' );
+    }
+};
+
+
 ```
