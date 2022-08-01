@@ -1,4 +1,6 @@
 # taxonomies
+
+***php
 function add_custom_taxonomies() {
   // Add new "Locations" taxonomy to Posts
   register_taxonomy('department-category', 'department', array(
