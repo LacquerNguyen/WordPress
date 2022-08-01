@@ -35,6 +35,6 @@ function my_change_posts_order( $query ){
         $query->set( 'order', 'ASC' );
     }
 };
-
+add_action( 'pre_get_posts', 'my_change_posts_order'); 
 
 ```
